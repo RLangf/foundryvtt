@@ -26,8 +26,10 @@ module "storage" {
   access_tier              = "hot"
 }
 
-// Create the Linux App Service Plan
-resource "azurerm_service_plan" "appserviceplan" {
+// Creates the Web App Service Plan
+module "service_plan" {
+  source = "./webapp"
+
   name = "webplan-${terraform.workspace}"
   resource_group_name = azurerm_resource_group.resource_group.name
   location = azurerm_resource_group.resource_group.location
@@ -35,8 +37,8 @@ resource "azurerm_service_plan" "appserviceplan" {
   sku_name = "F1"
 }
 
-// Create the web app 
-resource "azurerm_linux_web_app" "webapp" {
+// Creates the Web App
+module "web_app" {
   name = "webapp-${terraform.workspace}"
   resource_group_name = azurerm_resource_group.resource_group.name
   location = azurerm_resource_group.resource_group.location
@@ -46,9 +48,6 @@ resource "azurerm_linux_web_app" "webapp" {
   site_config {
     minimum_tls_version = "1.2"
     linux_fx_version = "NODE|18-lts"
-  }
-  appsettings {
-    license = ""
   }
 }
 
