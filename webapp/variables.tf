@@ -20,7 +20,7 @@ variable "os_type" {
 
 variable "sku_name" {
     type = string
-    description "The plan tier"
+    description = "The plan tier"
 }
 
 variable "service_plan_id" {

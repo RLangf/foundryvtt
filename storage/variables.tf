@@ -43,3 +43,23 @@ variable "designer" {
     description = "Who designed the deployment."
     default = "Rupert Langford"
 }
+
+variable "container_name" {
+    type = string
+    description = "The name of the storage container"
+}
+
+variable "source" {
+    type = string
+    description = "The location of the file to upload"
+}
+
+variable "container_access_type" {
+    type = string
+    description = "The container access type (blob, container, or private)"
+}
+
+variable "type" {
+    type = string
+    description = "The type of blob (Append, Block, or Page)"
+}
