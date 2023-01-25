@@ -36,7 +36,6 @@ module "web_app" {
   name                = "foundryvtt-webapp"
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
-  service_plan_id     = azurerm_service_plan.appserviceplan.id
   https_only          = false
   # Sets up app environment
   site_config {

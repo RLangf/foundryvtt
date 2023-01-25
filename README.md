@@ -1,6 +1,5 @@
 # foundryvtt
-Terraform Deployment for Azure App Service
-This Terraform configuration deploys a web app on an Azure consumption app service plan.
+Terraform Deployment for Azure App Service.
 
 # Prerequisites
 An Azure subscription
