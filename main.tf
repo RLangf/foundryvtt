@@ -37,18 +37,19 @@ module "web_app" {
   resource_group_name = azurerm_resource_group.resource_group.name
   location            = azurerm_resource_group.resource_group.location
   https_only          = false
+  runtime_version = "node|18-lts"
   # Sets up app environment
-  site_config {
-    minimum_tls_version = "1.2"
-    linux_fx_version    = "NODE|18-lts"
-  }
+  # site_config {
+  #   minimum_tls_version = "1.2"
+  #   linux_fx_version    = "NODE|18-lts"
+  # }
 }
 
 # Deploy code from repo to run foundryvtt
-resource "azurerm_app_service_source_control" "sourcecontrol" {
-  app_id                 = azurerm_linux_web_app.id
-  repo_url               = ""
-  branch                 = "foundryvtt"
-  use_manual_integration = true
-  use_mercurial          = false
+resource "azurerm_app_service_deployment_source" "foundryvtt-source" {
+  name = azurerm_web_app.web_app.name
+  resource_group_name = azurerm_resource_group.resource_group.name
+  location = azurerm_resource_group.resource_group.location
+  app_service_name = azurerm_web_app.web_app.name
+  package_uri = azurerm_storage_blob.foundryvtt_blob.source
 }
