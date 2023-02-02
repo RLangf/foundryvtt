@@ -18,11 +18,6 @@ variable "account_tier" {
     description = "The SKU of the SA. Standard or Premium usually."
 }
 
-variable "allow_blob_public_access" {
-    type = bool
-    description = "Dictates if access to the Blob is public or private."
-}
-
 variable "account_replication_type" {
     type = string
     description = "LRS, ZRS, or GRS."
@@ -47,16 +42,6 @@ variable "designer" {
 variable "container_name" {
     type = string
     description = "The name of the storage container"
-}
-
-variable "source" {
-    type = string
-    description = "The location of the file to upload"
-}
-
-variable "container_access_type" {
-    type = string
-    description = "The container access type (blob, container, or private)"
 }
 
 variable "type" {

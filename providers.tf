@@ -1,19 +1,17 @@
 terraform {
   required_version = ">=0.12"
 
-  //  backend "azurerm" {
-  //    resource_group_name  = "foundryvtt-resources"
-  //    storage_account_name = "storagekri1z"
-  //    container_name       = "tfstate"
-  //    key                  = "terraform.tfstate"
-  //  }
-
-
+  # backend "azurerm" {
+  # resource_group_name  = "foundryvtt-resources"
+  # storage_account_name = "storagekri1z"
+  # container_name       = "tfstate"
+  # key                  = "terraform.tfstate"
+  # }
 
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~>2.0"
+      version = "3.41.0"
     }
     random = {
       source  = "hashicorp/random"

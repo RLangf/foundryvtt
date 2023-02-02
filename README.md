@@ -7,6 +7,7 @@ Terraform installed on your machine
 A service principal for Terraform with the Contributor role on your subscription
 # Usage
 Clone this repository
+Comment out `backend` in 'providers.tf' on initial run through to allow bootstrap
 Create a terraform.tfvars file and add the following variables:
 subscription_id: your Azure subscription ID
 client_id: the client ID of your service principal
@@ -18,6 +19,7 @@ location: the Azure region to deploy the web app to
 Run terraform init to initialize the Terraform working directory
 Run terraform apply to deploy the web app
 Once the deployment is complete, run terraform destroy to delete the web app and associated resources
+Manual cleanup of the storage_account is required
 # Note
 Make sure to replace the values of the variables with your own values.
 Please read the Azure documentation to know more about the Azure consumption app service plan
