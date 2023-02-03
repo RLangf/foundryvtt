@@ -17,7 +17,9 @@ resource "azurerm_linux_web_app" "webapp" {
   zip_deploy_file = var.zip_deploy_file
   site_config {
     minimum_tls_version = var.minimum_tls_version
-    linux_fx_version = var.linux_fx_version
     always_on = var.always_on
+    application_stack {
+      node_version = var.node_version
+    }
   }
 }

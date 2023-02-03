@@ -42,9 +42,9 @@ variable "minimum_tls_version" {
     type = string
     description = "The minimum TLS version required"
 }
-variable "linux_fx_version" {
+variable "node_version" {
     type = string
-    description = "The runtime version to run on the linux web app"
+    description = "The runtime version of nodejs to run on the linux web app"
 }
 
 variable "zip_deploy_file" {

@@ -19,10 +19,10 @@ module "storage" {
   container_name           = "tfstate"
   resource_group_name      = azurerm_resource_group.resource_group.name
   location                 = azurerm_resource_group.resource_group.location
-  account_tier             = "standard"
+  account_tier             = "Standard"
   account_replication_type = "LRS"
   account_type             = "blob"
-  access_tier              = "hot"
+  access_tier              = "Hot"
   type                     = "Block"
 }
 
@@ -38,6 +38,6 @@ module "web_app" {
   https_only          = false
   zip_deploy_file     = module.storage.url
   minimum_tls_version = "1.2"
-  linux_fx_version    = "NODE|18-lts"
+  node_version        = "18-lts"
   always_on           = false
 }
