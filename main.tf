@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "resource_group" {
 module "storage" {
   source = "./storage"
 
-  name                     = "foundryvtt-storage${random_string.resource_code.result}"
+  name                     = "fvttstr${random_string.resource_code.result}"
   container_name           = "tfstate"
   resource_group_name      = azurerm_resource_group.resource_group.name
   location                 = azurerm_resource_group.resource_group.location
@@ -24,6 +24,7 @@ module "storage" {
   account_type             = "blob"
   access_tier              = "Hot"
   type                     = "Block"
+  file_name = "FoundryVTT-10.291.zip"
 }
 
 # Creates the Web App
@@ -40,4 +41,5 @@ module "web_app" {
   minimum_tls_version = "1.2"
   node_version        = "18-lts"
   always_on           = false
+  WEBSITE_RUN_FROM_PACKAGE = "1"
 }

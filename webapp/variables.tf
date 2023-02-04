@@ -23,10 +23,9 @@ variable "sku_name" {
     description = "The plan tier"
 }
 
-# variable "service_plan_id" {
-#     type = string
-#     description = "The service plan id"
-# }
+variable "WEBSITE_RUN_FROM_PACKAGE" {
+    type = string
+}
 
 variable "https_only" {
     type = string

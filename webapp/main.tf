@@ -15,6 +15,10 @@ resource "azurerm_linux_web_app" "webapp" {
   service_plan_id = azurerm_service_plan.foundryvtt-serviceplan.id
   https_only = var.https_only
   zip_deploy_file = var.zip_deploy_file
+  app_settings = {
+    WEBSITE_RUN_FROM_PACKAGE = var.WEBSITE_RUN_FROM_PACKAGE
+    WEBSITE_NODE_DEFAULT_VERSION = var.node_version
+  }
   site_config {
     minimum_tls_version = var.minimum_tls_version
     always_on = var.always_on

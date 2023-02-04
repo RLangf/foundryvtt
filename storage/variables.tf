@@ -3,6 +3,12 @@ variable "name" {
     description = "Name of the blob container."
 }
 
+variable "file_name" {
+    type = string
+    description = "Name of the Foundryvtt file."
+}
+
+
 variable "resource_group_name" {
     type = string
     description = "The resource group for the resource."
