@@ -21,5 +21,5 @@ resource "azurerm_storage_blob" "foundryvtt_blob" {
     storage_account_name = azurerm_storage_account.storage_account.name
     storage_container_name = azurerm_storage_container.foundryvtt_container.name
     type = var.type
-    source = "FoundryVTT-10.291.zip"
+    source = var.zip_file
 }

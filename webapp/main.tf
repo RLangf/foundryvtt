@@ -4,7 +4,7 @@ resource "azurerm_service_plan" "foundryvtt-serviceplan" {
   resource_group_name = var.resource_group_name
   location = var.location
   os_type = var.os_type
-  sku_name = "F1"
+  sku_name = var.sku_name
 }
 
 // Create the web app 
@@ -20,6 +20,7 @@ resource "azurerm_linux_web_app" "webapp" {
     WEBSITE_NODE_DEFAULT_VERSION = var.node_version
   }
   site_config {
+    app_command_line = "cd $HOME \n mkdir foundryvtt \n mkdir foundrydata \n cd foundryvtt \n unzip FoundryVTT-10.291.zip \n node resources/app/main.js --dataPath=$HOME/foundrydata"
     minimum_tls_version = var.minimum_tls_version
     always_on = var.always_on
     application_stack {

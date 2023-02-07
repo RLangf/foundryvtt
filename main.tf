@@ -7,7 +7,7 @@ resource "random_string" "resource_code" {
 
 # Create the resource group
 resource "azurerm_resource_group" "resource_group" {
-  name     = "foundryvtt-resources"
+  name     = "foundryvtt_resources"
   location = "UK South"
 }
 
@@ -24,22 +24,23 @@ module "storage" {
   account_type             = "blob"
   access_tier              = "Hot"
   type                     = "Block"
-  file_name = "FoundryVTT-10.291.zip"
+  file_name                = "FoundryVTT-10.291"
+  zip_file                 = "FoundryVTT-10.291.zip"
 }
 
 # Creates the Web App
 module "web_app" {
   source = "./webapp"
 
-  os_type             = "Linux"
-  sku_name            = "F1"
-  name                = "foundryvtt-webapp"
-  resource_group_name = azurerm_resource_group.resource_group.name
-  location            = azurerm_resource_group.resource_group.location
-  https_only          = false
-  zip_deploy_file     = module.storage.url
-  minimum_tls_version = "1.2"
-  node_version        = "18-lts"
-  always_on           = false
+  os_type                  = "Linux"
+  sku_name                 = "F1"
+  name                     = "foundryvtt-webapp"
+  resource_group_name      = azurerm_resource_group.resource_group.name
+  location                 = azurerm_resource_group.resource_group.location
+  https_only               = false
+  zip_deploy_file          = "FoundryVTT-10.291"
+  minimum_tls_version      = "1.2"
+  node_version             = "18-lts"
+  always_on                = false
   WEBSITE_RUN_FROM_PACKAGE = "1"
 }

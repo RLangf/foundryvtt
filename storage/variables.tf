@@ -8,7 +8,6 @@ variable "file_name" {
     description = "Name of the Foundryvtt file."
 }
 
-
 variable "resource_group_name" {
     type = string
     description = "The resource group for the resource."
@@ -53,4 +52,9 @@ variable "container_name" {
 variable "type" {
     type = string
     description = "The type of blob (Append, Block, or Page)"
+}
+
+variable "zip_file" {
+    type = string
+    description = "The file path of the zip file to upload"
 }
